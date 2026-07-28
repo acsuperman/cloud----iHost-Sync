@@ -983,19 +983,19 @@ export const thermostatStateParamMappings: StateParamMapping[] = [
   {
     paramKey: 'manTargetTemp',
     get: (s) => s['thermostat-target-setpoint']?.[STSS.MANUAL_MODE]?.targetSetpoint,
-    set: (s, v) => { s['thermostat-target-setpoint'][STSS.MANUAL_MODE].targetSetpoint = v; },
+    set: (s, v) => { if (!s['thermostat-target-setpoint'][STSS.MANUAL_MODE]) s['thermostat-target-setpoint'][STSS.MANUAL_MODE] = {}; s['thermostat-target-setpoint'][STSS.MANUAL_MODE].targetSetpoint = v; },
     transform: (v, isParams2State) => isParams2State ? v / 10 : v * 10,
   },
   {
     paramKey: 'autoTargetTemp',
     get: (s) => s['thermostat-target-setpoint']?.[STSS.AUTO_MODE]?.targetSetpoint,
-    set: (s, v) => { s['thermostat-target-setpoint'][STSS.AUTO_MODE].targetSetpoint = v; },
+    set: (s, v) => { if (!s['thermostat-target-setpoint'][STSS.AUTO_MODE])s['thermostat-target-setpoint'][STSS.AUTO_MODE] = {}; s['thermostat-target-setpoint'][STSS.AUTO_MODE].targetSetpoint = v; },
     transform: (v, isParams2State) => isParams2State ? v / 10 : v * 10,
   },
   {
     paramKey: 'ecoTargetTemp',
     get: (s) => s['thermostat-target-setpoint']?.[STSS.ECO_MODE]?.targetSetpoint,
-    set: (s, v) => { s['thermostat-target-setpoint'][STSS.ECO_MODE].targetSetpoint = v; },
+    set: (s, v) => { if (!s['thermostat-target-setpoint'][STSS.ECO_MODE])s['thermostat-target-setpoint'][STSS.ECO_MODE] = {}; s['thermostat-target-setpoint'][STSS.ECO_MODE].targetSetpoint = v; },
     transform: (v, isParams2State) => isParams2State ? v / 10 : v * 10,
   },
 ];

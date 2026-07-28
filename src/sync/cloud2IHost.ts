@@ -6,7 +6,7 @@ import { generateRequestIhostHeadObject, paramsToWeeklySchedule } from '@/util';
 import { inspect } from 'node:util';
 import { thermostatStateParamMappings, WEEKLY_SCHEDULE_PARAM_KEYS } from '@/common';
 const sysmsgSync = (data: WebSocketMessage) => {
-  if (data.action != 'sysmsg')
+  if (data.action != 'sysmsg' || data.deviceid != thermostat.third_serial_number)
     return;
   console.log('cloud-->>server via webSocket:设备上下线', data);
   const params = data.params as Record<string, any> | undefined;
